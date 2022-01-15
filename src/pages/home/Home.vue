@@ -1,9 +1,8 @@
 <template>
   <div class="home">
     <div class="container">
-      <div class="home__head">
-        <input
-          v-on:keyup.enter="createPost()"
+      <form @submit.prevent class="home__form">
+        <input      
           v-model="titlePost"
           class="post__input"
           type="text"
@@ -16,7 +15,7 @@
         >
           Добавить
         </button>
-      </div>
+      </form>
       <div class="home__posts">
         <div v-for="post in posts" :key="post.id" class="home__post">
           <div class="home__post-head">
@@ -71,7 +70,7 @@ export default {
 .home {
   background-color: #a8d7da;
   min-height: 100vh;
-  &__head {
+  &__form {
     display: flex;
     padding-top: 50px;
     justify-content: space-between;
