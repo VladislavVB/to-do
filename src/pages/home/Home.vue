@@ -1,66 +1,40 @@
 <template>
   <div class="home">
     <div class="container">
-      <form @submit.prevent class="home__form">
-        <input      
-          v-model="titlePost"
-          class="post__input"
-          type="text"
-          placeholder="Описание дела..."
-        />
-        <button
-          @click="createPost()"
-          :class="{ active: this.titlePost === '' }"
-          class="btn post__add"
-        >
-          Добавить
-        </button>
-      </form>
+      <!-- ss  -->
+      <PostForm @create="createPost" />
       <div class="home__posts">
-        <div v-for="post in posts" :key="post.id" class="home__post">
-          <div class="home__post-head">
-            <div class="home__post-title">{{ post.title }}</div>
-            <div class="home__post-btns">
-              <div class="okey__btns">
-                <button class="complite">
-                  <img src="@/assets/ok.svg" alt="" />
-                </button>
-                <button style="display: none" class="complite">
-                  <img src="@/assets/close.svg" alt="" />
-                </button>
-              </div>
-              <button class="remove">
-                <img src="@/assets/del.svg" alt="" />
-              </button>
-            </div>
-          </div>
-        </div>
+        <PostList :posts="posts" @remove="removePost" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import PostForm from "./components/PostForm";
+import PostList from "./components/PostList";
+
 export default {
   name: "Home",
+  components: {
+    PostForm,
+    PostList,
+  },
   data() {
     return {
-      titlePost: "",
       posts: [
-        { id: 1, title: "Дело 1" },
-        { id: 2, title: "Дело 2" },
-        { id: 3, title: "Дело 3" },
+        { id: 1, title: "Дело 1", copmlitePost: false },
+        { id: 2, title: "Дело 2", copmlitePost: false },
+        { id: 3, title: "Дело 3", copmlitePost: false },
       ],
     };
   },
   methods: {
-    createPost() {
-      const newPost = {
-        id: Date.now(),
-        title: this.titlePost,
-      };
-      this.posts.push(newPost);
-      this.titlePost = "";
+    createPost(post) {
+      this.posts.push(post);
+    },
+    removePost(post) {
+      this.posts = this.posts.filter((p) => p.id !== post.id);
     },
   },
 };
@@ -109,35 +83,5 @@ export default {
       }
     }
   }
-}
-.post {
-  &__add {
-    width: 140px;
-    height: 40px;
-    background: #7d83b9;
-    border-radius: 20px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    &.active {
-      opacity: 0.5;
-      pointer-events: none;
-    }
-  }
-  &__input {
-    padding: 0 20px;
-    width: 650px;
-    background: #ffffff;
-    border: 1px solid #c4c4c4;
-    box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-  }
-}
-.complite {
-  background-color: #71a663;
-}
-.remove {
-  background-color: #c15151;
-  margin-left: 10px;
 }
 </style>
