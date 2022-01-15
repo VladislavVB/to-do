@@ -44,11 +44,11 @@ export default {
     copmlitePost(post) {
       post.copmlitePost = true;
       console.log(this.posts);
-      localStorage.setItem('case', JSON.stringify(this.posts))
+      localStorage.setItem("case", JSON.stringify(this.posts));
     },
     closePost(post) {
       post.copmlitePost = false;
-      localStorage.setItem('case', JSON.stringify(this.posts))
+      localStorage.setItem("case", JSON.stringify(this.posts));
     },
   },
 };
@@ -95,6 +95,7 @@ export default {
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        margin-left: 10px;
       }
     }
   }
@@ -104,6 +105,5 @@ export default {
 }
 .remove {
   background-color: #c15151;
-  margin-left: 10px;
 }
 </style>

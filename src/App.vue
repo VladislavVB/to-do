@@ -16,4 +16,16 @@
   max-width: 800px;
   margin: auto;
 }
+
+@media (max-width: 992px) {
+  .container {
+    width: 97%;
+  }
+}
+
+@media (max-width: 575px) {
+  * {
+    font-size: 12px;
+  }
+}
 </style>

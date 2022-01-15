@@ -62,4 +62,33 @@ export default {
     border-radius: 20px;
   }
 }
+
+@media (max-width: 992px ) { 
+  .case {
+    &__add {
+      width: 20%;
+    }
+    &__input {
+      width: 75%;
+    }
+  }
+}
+@media (max-width: 575px ) { 
+  .case {
+    &__add {
+      width: 100%;
+    }
+    &__input {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+  }
+  .home {
+    &__form {
+      flex-direction: column;
+    }
+  }
+}
+
 </style>
