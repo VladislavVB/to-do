@@ -2,15 +2,34 @@
   <div class="home">
     <div class="container">
       <div class="home__head">
-        <input class="post__input" type="text" placeholder="Описание дела..." />
-        <button class="btn post__add">Добавить</button>
+        <input
+          v-on:keyup.enter="createPost()"
+          v-model="titlePost"
+          class="post__input"
+          type="text"
+          placeholder="Описание дела..."
+        />
+        <button
+          @click="createPost()"
+          :class="{ active: this.titlePost === '' }"
+          class="btn post__add"
+        >
+          Добавить
+        </button>
       </div>
       <div class="home__posts">
         <div v-for="post in posts" :key="post.id" class="home__post">
           <div class="home__post-head">
             <div class="home__post-title">{{ post.title }}</div>
             <div class="home__post-btns">
-              <button class="complite"></button>
+              <div class="okey__btns">
+                <button class="complite">
+                  <img src="@/assets/ok.svg" alt="" />
+                </button>
+                <button style="display: none" class="complite">
+                  <img src="@/assets/close.svg" alt="" />
+                </button>
+              </div>
               <button class="remove">
                 <img src="@/assets/del.svg" alt="" />
               </button>
@@ -27,12 +46,23 @@ export default {
   name: "Home",
   data() {
     return {
+      titlePost: "",
       posts: [
         { id: 1, title: "Дело 1" },
         { id: 2, title: "Дело 2" },
         { id: 3, title: "Дело 3" },
       ],
     };
+  },
+  methods: {
+    createPost() {
+      const newPost = {
+        id: Date.now(),
+        title: this.titlePost,
+      };
+      this.posts.push(newPost);
+      this.titlePost = "";
+    },
   },
 };
 </script>
@@ -57,6 +87,7 @@ export default {
     padding: 5px 20px;
     border-bottom: 1px solid #c4c4c4;
     color: #000;
+    transition: 0.5s;
     &:last-child {
       border-bottom: 0px solid #c4c4c4;
     }
@@ -89,6 +120,10 @@ export default {
     color: #fff;
     border: none;
     cursor: pointer;
+    &.active {
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
   &__input {
     padding: 0 20px;
@@ -100,7 +135,7 @@ export default {
   }
 }
 .complite {
-  background-color: #71A663;
+  background-color: #71a663;
 }
 .remove {
   background-color: #c15151;
