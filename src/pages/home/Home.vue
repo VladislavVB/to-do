@@ -3,10 +3,10 @@
     <div class="container">
       <!-- ss  -->
       <PostForm @create="createPost" />
-      <div v-if="this.posts.length > 0" class="home__posts">
+      <div v-if="this.posts.length > 0" class="home__cases">
         <PostList :posts="posts" @remove="removePost" />
       </div>
-      <h4 class="tasks__zero" v-else>Дел нет :)</h4>
+      <h4 class="cases__zero" v-else>Дел нет :)</h4>
     </div>
   </div>
 </template>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tasks {
+.cases {
   &__zero {
     text-align: center;
     margin-top: 40px;
@@ -63,39 +63,11 @@ export default {
     padding-top: 50px;
     justify-content: space-between;
   }
-  &__posts {
+  &__cases {
     border-radius: 20px;
     width: 100%;
     overflow: hidden;
     margin-top: 40px;
-  }
-  &__post {
-    background-color: #fff;
-    padding: 5px 20px;
-    border-bottom: 1px solid #c4c4c4;
-    color: #000;
-    transition: 0.5s;
-    &:last-child {
-      border-bottom: 0px solid #c4c4c4;
-    }
-    &-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    &-btns {
-      display: flex;
-      button {
-        border-radius: 50%;
-        border: none;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-      }
-    }
   }
 }
 </style>

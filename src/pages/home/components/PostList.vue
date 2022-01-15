@@ -3,11 +3,11 @@
     v-for="post in posts"
     :key="post.id"
     :class="{ active: post.copmlitePost }"
-    class="home__post"
+    class="home__case"
   >
-    <div class="home__post-head">
-      <div class="home__post-title">{{ post.title }}</div>
-      <div class="home__post-btns">
+    <div class="home__case-head">
+      <div class="home__case-title">{{ post.title }}</div>
+      <div class="home__case-btns">
         <div class="okey__btns">
           <button
             v-if="post.copmlitePost === false"
@@ -61,13 +61,13 @@ export default {
     padding-top: 50px;
     justify-content: space-between;
   }
-  &__posts {
+  &__cases {
     border-radius: 20px;
     width: 100%;
     overflow: hidden;
     margin-top: 40px;
   }
-  &__post {
+  &__case {
     background-color: #fff;
     padding: 5px 20px;
     border-bottom: 1px solid #c4c4c4;
