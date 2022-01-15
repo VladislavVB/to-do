@@ -30,14 +30,20 @@ export default {
       ],
     };
   },
+  mounted() {
+     this.posts = JSON.parse(localStorage.getItem('case'))
+  },
   methods: {
     createPost(post) {
       this.posts.push(post);
+      localStorage.setItem('case', JSON.stringify(this.posts))
     },
     removePost(post) {
       this.posts = this.posts.filter((p) => p.id !== post.id);
+      localStorage.setItem('case', JSON.stringify(this.posts))
     },
   },
+  
 };
 </script>
 

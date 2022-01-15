@@ -44,9 +44,11 @@ export default {
     copmlitePost(post) {
       post.copmlitePost = true;
       console.log(this.posts);
+      localStorage.setItem('case', JSON.stringify(this.posts))
     },
     closePost(post) {
       post.copmlitePost = false;
+      localStorage.setItem('case', JSON.stringify(this.posts))
     },
   },
 };
