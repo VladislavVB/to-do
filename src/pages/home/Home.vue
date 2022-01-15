@@ -3,9 +3,10 @@
     <div class="container">
       <!-- ss  -->
       <PostForm @create="createPost" />
-      <div class="home__posts">
+      <div v-if="this.posts.length > 0" class="home__posts">
         <PostList :posts="posts" @remove="removePost" />
       </div>
+      <h4 class="tasks__zero" v-else>Дел нет :)</h4>
     </div>
   </div>
 </template>
@@ -41,6 +42,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tasks {
+  &__zero {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+  }
+}
 .home {
   background-color: #a8d7da;
   min-height: 100vh;
