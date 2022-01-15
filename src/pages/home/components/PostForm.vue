@@ -2,14 +2,14 @@
   <form @submit.prevent class="home__form">
     <input
       v-model="post.title"
-      class="post__input"
+      class="case__input"
       type="text"
       placeholder="Описание дела..."
     />
     <button
       @click="createPost()"
       :class="{ active: this.post.title === '' }"
-      class="btn post__add"
+      class="btn case__add"
     >
       Добавить
     </button>
@@ -39,7 +39,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.post {
+.case {
   &__add {
     width: 140px;
     height: 40px;
