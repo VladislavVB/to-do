@@ -9,20 +9,20 @@
       <div class="home__case-title">{{ post.title }}</div>
       <div class="home__case-btns">
         <div class="okey__btns">
-          <button
+          <my-button
             v-if="post.copmlitePost === false"
             @click="copmlitePost(post)"
             class="complite"
           >
             <img src="@/assets/ok.svg" alt="" />
-          </button>
-          <button v-else @click="closePost(post)" class="complite">
+          </my-button>
+          <my-button v-else @click="closePost(post)" class="complite">
             <img src="@/assets/close.svg" alt="" />
-          </button>
+          </my-button>
         </div>
-        <button @click="$emit('remove', post)" class="remove">
+        <my-button @click="$emit('remove', post)" style="background-color: #c15151"  >
           <img src="@/assets/del.svg" alt="" />
-        </button>
+        </my-button>
       </div>
     </div>
   </div>
@@ -43,7 +43,6 @@ export default {
   methods: {
     copmlitePost(post) {
       post.copmlitePost = true;
-      console.log(this.posts);
       localStorage.setItem("case", JSON.stringify(this.posts));
     },
     closePost(post) {
@@ -55,6 +54,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .home {
   &__form {
     display: flex;

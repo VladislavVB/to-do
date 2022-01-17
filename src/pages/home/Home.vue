@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <div class="container">
-      <!-- ss  -->
       <PostForm @create="createPost" />
       <div v-if="this.posts.length > 0" class="home__cases">
         <PostList :posts="posts" @remove="removePost" />
@@ -23,23 +22,30 @@ export default {
   },
   data() {
     return {
-      posts: [],
+      posts: [
+        { id: 1, title: "Дело 1", copmlitePost: false },
+        { id: 2, title: "Дело 2", copmlitePost: false },
+        { id: 3, title: "Дело 3", copmlitePost: false },
+      ],
     };
   },
   mounted() {
-     this.posts = JSON.parse(localStorage.getItem('case'))
+    if (JSON.parse(localStorage.getItem("case"))) {
+      this.posts = JSON.parse(localStorage.getItem("case"));
+    } else {
+      localStorage.setItem("case", JSON.stringify(this.posts));
+    }
   },
   methods: {
     createPost(post) {
       this.posts.push(post);
-      localStorage.setItem('case', JSON.stringify(this.posts))
+      localStorage.setItem("case", JSON.stringify(this.posts));
     },
     removePost(post) {
       this.posts = this.posts.filter((p) => p.id !== post.id);
-      localStorage.setItem('case', JSON.stringify(this.posts))
+      localStorage.setItem("case", JSON.stringify(this.posts));
     },
   },
-  
 };
 </script>
 
