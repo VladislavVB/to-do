@@ -23,11 +23,7 @@ export default {
   },
   data() {
     return {
-      posts: [
-        { id: 1, title: "Дело 1", copmlitePost: false },
-        { id: 2, title: "Дело 2", copmlitePost: false },
-        { id: 3, title: "Дело 3", copmlitePost: false },
-      ],
+      posts: [],
     };
   },
   mounted() {
@@ -53,6 +49,8 @@ export default {
     text-align: center;
     margin-top: 40px;
     font-size: 20px;
+    font-weight: 500;
+    color: #fff;
   }
 }
 .home {
