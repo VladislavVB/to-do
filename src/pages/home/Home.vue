@@ -70,8 +70,8 @@ export default {
   &__cases {
     border-radius: 20px;
     width: 100%;
-    overflow: hidden;
     margin-top: 40px;
+    transition: 0.5s;
   }
 }
 </style>
